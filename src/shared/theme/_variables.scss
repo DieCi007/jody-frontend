@@ -1,0 +1,16 @@
+$primary: #3c3c3c;
+$primary-light: rgb(99, 99, 99);
+$primary-dark: rgb(42, 42, 42);
+
+$secondary: #fed100;
+$secondary-light: rgb(254, 218, 51);
+$secondary-dark: rgb(177, 146, 0);
+
+$info: #463c34;
+$info-light: rgb(107, 99, 92);
+$info-dark: rgb(49, 42, 36);
+
+$smartphone: "only screen and (min-width: 320px) and (max-width: 812px)";
+$tablet: "only screen and (min-width: 813px) and (max-width: 1024)";
+$tablet-max: "only screen and (max-width: 1024px)";
+$desktop-min: "only screen and (min-width: 1025px)";
