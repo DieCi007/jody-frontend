@@ -19,6 +19,9 @@ const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
                 light: 'rgb(107, 99, 92)',
                 dark: 'rgb(49, 42, 36)',
             },
+            background: {
+                paper: 'rgb(240,240,240)'
+            }
         } : {
             primary: {
                 main: '#3c3c3c',
@@ -35,6 +38,9 @@ const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
                 light: 'rgb(107, 99, 92)',
                 dark: 'rgb(49, 42, 36)',
             },
+            background: {
+                paper: 'rgb(33,33,33)'
+            }
         })
     }
 });
