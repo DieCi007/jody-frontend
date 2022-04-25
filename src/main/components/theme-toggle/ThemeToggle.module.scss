@@ -1,0 +1,38 @@
+@import "../../../shared/theme/variables";
+
+.toggleBtn {
+  width: 4.5rem;
+  height: 1.5rem;
+  background-color: #fafafa;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+
+  &:after {
+    content: url('../../../assets/images/sun-line.svg');
+    width: 2rem;
+    height: 2rem;
+    background-color: $warning;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+    left: 0;
+    display: grid;
+    place-content: center;
+    line-height: 0;
+    transition: background-color 1s, transform 1s ease-in;
+  }
+
+  &.dark:after {
+    content: url('../../../assets/images/moon-line.svg');
+    background-color: $info;
+    transform: translateX(2.5rem) rotate(360deg);
+  }
+
+  .input {
+    display: none;
+  }
+}
+

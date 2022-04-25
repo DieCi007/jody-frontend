@@ -2,6 +2,7 @@ import { useTheme } from '@mui/material';
 import styles from './Header.module.scss';
 import HeaderLink from '../header-link/HeaderLink';
 import { useTranslation } from 'react-i18next';
+import ThemeToggle from '../theme-toggle/ThemeToggle';
 
 const Header = () => {
     const {palette} = useTheme();
@@ -16,6 +17,7 @@ const Header = () => {
             {/*<HeaderLink redirect='home' title={t('history')}/>*/}
             {/*<HeaderLink redirect='home' title={t('contactsHeader')}/>*/}
             {/*<HeaderLink redirect='home' title={t('jobsHeader')}/>*/}
+            <ThemeToggle/>
         </header>
     )
 }
