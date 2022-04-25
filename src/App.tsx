@@ -5,28 +5,21 @@ import { getDefaultThemeMode } from './shared/theme/default-theme-mode';
 import { getDesignTokens } from './shared/theme/mui-design-tokens';
 import Main from './main/Main';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import { OPTIONS } from './shared/i18n/translations';
+import { ColorModeContext } from './shared/theme/theme-context';
 
-export const ColorModeContext = createContext<{ toggleColor: () => void }>({
-    toggleColor: () => {
-    }
-});
+const LIGHT_THEME = createTheme(getDesignTokens('light'));
+const DARK_THEME = createTheme(getDesignTokens('dark'));
 
 function App() {
     // THEME
     const prefersDarkMode: boolean = useMediaQuery('(prefers-color-scheme: dark)');
-    const [themeMode, setThemeMode] = useState<'light' | 'dark'>('light');
+    const [themeMode, setThemeMode] = useState<PaletteMode>(getDefaultThemeMode(prefersDarkMode));
+    const theme = useMemo(() => themeMode === 'light' ? LIGHT_THEME : DARK_THEME, [themeMode]);
     const themeContext = useMemo(() => ({
         toggleColor: () => {
-            setThemeMode((prev) => (prev === 'light' ? 'dark' : 'light'))
+            setThemeMode(prev => prev === 'light' ? 'dark' : 'light')
         }
     }), []);
-    const theme = useMemo(() => createTheme(getDesignTokens(themeMode)), [themeMode]);
-
-    // LOAD LANGUAGE
-    i18n.use(initReactI18next).init(OPTIONS);
 
     return (
         <div className={styles.app} style={{background: theme.palette.background.default}}>

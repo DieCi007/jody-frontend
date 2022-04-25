@@ -4,10 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import { OPTIONS } from './shared/i18n/translations';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
+// LOAD LANGUAGE
+i18n.use(initReactI18next).init(OPTIONS);
+
 root.render(
     <React.StrictMode>
         <BrowserRouter>

@@ -1,7 +1,7 @@
 import styles from './ThemeToggle.module.scss';
 import { useTheme } from '@mui/material';
 import { useContext } from 'react';
-import { ColorModeContext } from '../../../App';
+import { ColorModeContext } from '../../../shared/theme/theme-context';
 import { LS_THEME_MODE } from '../../../shared/constants';
 
 const ThemeToggle = () => {
@@ -15,9 +15,8 @@ const ThemeToggle = () => {
     return (
         <>
             <label htmlFor='theme-toggle' className={`${styles.toggleBtn} 
-                   ${palette.mode === 'dark' ? styles.dark : ''}`}
-                   onClick={() => onChange()}>
-                <input type='checkbox' id='theme-toggle' className={styles.input}/>
+                   ${palette.mode === 'dark' ? styles.dark : ''}`}>
+                <input onChange={() => onChange()} type='checkbox' id='theme-toggle' className={styles.input}/>
             </label>
         </>
     )

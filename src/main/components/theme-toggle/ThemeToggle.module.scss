@@ -22,7 +22,7 @@
     display: grid;
     place-content: center;
     line-height: 0;
-    transition: background-color 1s, transform 1s ease-in;
+    transition: background-color 1s, transform 500ms ease-in;
   }
 
   &.dark:after {
