@@ -1,8 +1,9 @@
-import { useTheme } from '@mui/material';
+import { NativeSelect, useTheme } from '@mui/material';
 import styles from './Header.module.scss';
 import HeaderLink from '../header-link/HeaderLink';
 import { useTranslation } from 'react-i18next';
 import ThemeToggle from '../theme-toggle/ThemeToggle';
+import LanguageSelect from '../language-select/LanguageSelect';
 
 const Header = () => {
     const {palette} = useTheme();
@@ -18,6 +19,7 @@ const Header = () => {
             {/*<HeaderLink redirect='home' title={t('contactsHeader')}/>*/}
             {/*<HeaderLink redirect='home' title={t('jobsHeader')}/>*/}
             <ThemeToggle/>
+            <LanguageSelect/>
         </header>
     )
 }
