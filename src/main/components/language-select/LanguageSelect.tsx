@@ -1,4 +1,4 @@
-import { InputBase, NativeSelect, styled, useTheme } from '@mui/material';
+import { InputBase, NativeSelect, styled } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 const BootstrapInput = styled(InputBase)(({theme}) => ({
@@ -9,7 +9,7 @@ const BootstrapInput = styled(InputBase)(({theme}) => ({
         color: theme.palette.getContrastText(theme.palette.background.paper),
         border: '1px solid #fed100',
         fontSize: 16,
-        padding: '10px 26px 10px 12px',
+        padding: '8px 26px 8px 12px',
         transition: theme.transitions.create(['border-color', 'box-shadow']),
         '&:focus': {
             borderRadius: '10px',
