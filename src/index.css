@@ -1,3 +1,5 @@
+@import "~@egjs/react-flicking/dist/flicking-inline.css";
+
 @font-face {
     font-family: 'Roboto';
     src: url("assets/font/Roboto-Bold.ttf") format("truetype");

@@ -2,6 +2,7 @@ import { Global } from '@emotion/react';
 import { Box, Button, styled, SwipeableDrawer, useTheme } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { useState } from 'react';
+import DrawerSlide from '../drawer-slide/DrawerSlide';
 
 const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
 const Puller = styled(Box)(({theme}) => ({
@@ -53,7 +54,9 @@ const Drawer = () => {
                         <div style={{height: drawerBleeding}}/>
                     </div>
                 }
-                <div style={{height: '10rem', backgroundColor: palette.background.paper}}/>
+                <div style={{height: '11rem', backgroundColor: palette.background.paper}}>
+                    <DrawerSlide/>
+                </div>
             </SwipeableDrawer>
         </>
     )

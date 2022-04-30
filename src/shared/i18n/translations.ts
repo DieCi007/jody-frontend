@@ -4,17 +4,23 @@ export const OPTIONS: InitOptions = {
     resources: {
         en: {
             translation: {
-                mainPage: 'Home'
+                mainPage: 'Home',
+                contactsHeader: 'Contact & Quotations',
+                jobsHeader: 'Work Positions'
             }
         },
         it: {
             translation: {
-                mainPage: 'Home'
+                mainPage: 'Home',
+                contactsHeader: 'Contatti & Preventivi',
+                jobsHeader: 'Posizioni di Lavoro'
             }
         },
         al: {
             translation: {
-                mainPage: 'Faqja Kryesore'
+                mainPage: 'Faqja Kryesore',
+                contactsHeader: 'Kontakt & Preventive',
+                jobsHeader: 'Vende Pune'
             }
         }
     },

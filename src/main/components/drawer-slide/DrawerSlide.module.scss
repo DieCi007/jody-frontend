@@ -1,0 +1,106 @@
+@import "../../../shared/theme/variables";
+
+.panel {
+  width: 50%;
+  height: 90%;
+  margin: 0 .5rem;
+  transform-style: preserve-3d;
+
+  .wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+
+    .planeTop {
+      position: absolute;
+      width: 100%;
+      height: 60%;
+      bottom: 25%;
+      border-width: 5px;
+      border-style: solid;
+      box-sizing: border-box;
+      transform-style: preserve-3d;
+      transform-origin: bottom;
+      transform: rotateX(45deg);
+      background-image: url("../../../assets/images/tile.jpeg");
+      background-size: cover;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: 10%;
+        width: 10px;
+        height: 5px;
+        background: white;
+      }
+
+      .titleWrapper {
+        position: absolute;
+        bottom: 100%;
+        width: 100%;
+        transform-origin: bottom;
+        transform-style: preserve-3d;
+        transform: rotateX(-45deg);
+
+        .title {
+          border-radius: 0 15px;
+          display: inline-block;
+          font-weight: 700;
+          background-color: rgba(254, 218, 51, 0.4);
+          width: 100%;
+          transform-origin: bottom;
+          font-size: 1.6rem;
+          text-align: center;
+          position: relative;
+
+          &:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 60%;
+            right: 0;
+            height: 4px;
+            background: $secondary-light;
+          }
+
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 60%;
+            left: 0;
+            height: 4px;
+            background: $secondary;
+          }
+        }
+      }
+    }
+
+    .planeBottom {
+      position: absolute;
+      width: 100%;
+      height: 13%;
+      bottom: 12%;
+      border-width: 5px;
+      border-style: solid;
+      border-top: 0;
+      box-sizing: border-box;
+      background: #a0a0a0;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        right: 10%;
+        width: 10px;
+        height: 5px;
+        background: linear-gradient(to bottom, white, white 50%, #a0a0a0 50%, #a0a0a0);
+      }
+    }
+  }
+}
