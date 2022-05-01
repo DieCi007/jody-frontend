@@ -24,7 +24,7 @@ function App() {
     return (
         <div className={styles.app} style={{background: theme.palette.background.default}}>
             <CssBaseline/>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+            {/*<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>*/}
             <ColorModeContext.Provider value={themeContext}>
                 <ThemeProvider theme={theme}>
                     <Routes>

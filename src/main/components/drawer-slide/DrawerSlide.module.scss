@@ -45,9 +45,10 @@
         width: 100%;
         transform-origin: bottom;
         transform-style: preserve-3d;
-        transform: rotateX(-45deg);
+        //transform: rotateX(-45deg);
 
         .title {
+          transform: rotateX(-45deg);
           border-radius: 0 15px;
           display: inline-block;
           font-weight: 700;
@@ -79,7 +80,17 @@
           }
         }
       }
+
+      .icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
     }
+
 
     .planeBottom {
       position: absolute;
