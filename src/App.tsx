@@ -28,7 +28,7 @@ function App() {
             <ColorModeContext.Provider value={themeContext}>
                 <ThemeProvider theme={theme}>
                     <Routes>
-                        <Route path='/home' element={<Main/>}/>
+                        <Route path='/home/*' element={<Main/>}/>
                         <Route path='*' element={<Navigate to='home'/>}/>
                     </Routes>
                 </ThemeProvider>

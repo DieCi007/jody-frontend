@@ -16,7 +16,6 @@ const Puller = styled(Box)(({theme}) => ({
 }));
 const drawerBleeding = 50;
 const isMobile = true//localStorage.mobile || window.navigator.maxTouchPoints > 1;
-
 const Drawer = () => {
     const {palette} = useTheme();
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
@@ -37,11 +36,12 @@ const Drawer = () => {
                     right: 0, width: '3rem', margin: 'auto',
                 }} variant='contained' color='secondary'>Menu</Button>
             }
-            <SwipeableDrawer anchor='bottom' disableBackdropTransition={!iOS}
-                             disableDiscovery={iOS} onClose={() => setIsDrawerOpen(false)}
-                             onOpen={() => setIsDrawerOpen(true)} open={isDrawerOpen}
-                             swipeAreaWidth={drawerBleeding} disableSwipeToOpen={false}
-                             ModalProps={{keepMounted: true}}>
+            <SwipeableDrawer
+                anchor='bottom' disableBackdropTransition={!iOS}
+                disableDiscovery={iOS} onClose={() => setIsDrawerOpen(false)}
+                onOpen={() => setIsDrawerOpen(true)} open={isDrawerOpen}
+                swipeAreaWidth={drawerBleeding} disableSwipeToOpen={false}
+                ModalProps={{keepMounted: true}}>
                 {
                     isMobile &&
                     <div style={{
