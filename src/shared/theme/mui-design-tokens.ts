@@ -20,7 +20,7 @@ const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
                 dark: 'rgb(49, 42, 36)',
             },
             background: {
-                paper: 'rgb(240,240,240)'
+                paper: 'rgb(238, 238, 255)'
             }
         } : {
             primary: {

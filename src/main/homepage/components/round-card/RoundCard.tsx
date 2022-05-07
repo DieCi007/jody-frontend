@@ -9,7 +9,7 @@ export type RoundCardProps = {
 
 const RoundCard = React.forwardRef(({style, classNames}: RoundCardProps, ref: ForwardedRef<HTMLDivElement>) => {
     const {palette} = useTheme();
-    return <div style={{...style, backgroundColor: palette.background.paper}}
+    return <div style={{backgroundColor: palette.background.paper, ...style}}
                 className={`${classNames ? classNames.join(' ') : ''} ${styles.container}`}
                 ref={ref}>
 
