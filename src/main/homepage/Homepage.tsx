@@ -6,9 +6,22 @@ import RoundCard from './components/round-card/RoundCard';
 import { useTheme } from '@mui/material';
 import { AppScene } from './components/scene/AppScene';
 import { PROPS } from './SceneKeyframes';
+import plantBitumen from '../../assets/images/bitumen-plant.jpeg';
+import plantAsphalt from '../../assets/images/asphalt-plant.jpeg';
+import imgMain1 from '../../assets/images/home-1.jpeg';
+import imgMain2 from '../../assets/images/home-2.jpeg';
+import imgMain3 from '../../assets/images/home-3.jpeg';
+import srDay from '../../assets/images/sr-day.jpeg';
+import srNight from '../../assets/images/sr-night.jpeg';
+import vs1 from '../../assets/images/vs/v-sign-1.jpeg';
+import vs3 from '../../assets/images/vs/v-sign-3.jpeg';
+import vs4 from '../../assets/images/vs/v-sign-8.jpeg';
+import vs5 from '../../assets/images/vs/v-sign-9.jpeg';
+import horizontalSign from '../../assets/images/horizontal-sign-main.jpeg';
+import horizontalMarking from '../../assets/images/horizontal-marking-main.jpeg';
 
 const Homepage = () => {
-    const {palette} = useTheme();
+    const {palette, shadows} = useTheme();
     const [currentPage, setCurrentPage] = useState<number>(0);
     const flicking = useRef<Flicking>(null);
     const scene = useRef<AppScene>(null);
@@ -61,38 +74,33 @@ const Homepage = () => {
             <div>
                 <AppScene keyframes={PROPS} time={0} ref={scene}>
                     <div className={`${styles.background} shapes`}>
-                        <div className={`background2`}
-                             style={{
-                                 backgroundColor: 'green', transform: 'translateY(100%)', height: '100%',
-                                 width: '100%',
-                             }}/>
-                        <RoundCard style={{
+                        <div className={`background2 ${styles.thirdPage}`}
+                             style={{backgroundImage: palette.mode === 'light' ? `url(${srDay})` : `url(${srNight})`}}/>
+                        <RoundCard index={1} style={{
                             width: '40vmax', height: '40vmax', top: '50%', right: '65%',
-                            border: '35px solid #fed100'
-                        }} classNames={['bottom-left']}/>
-                        <RoundCard style={{
+                            border: '35px solid #fed100', boxShadow: shadows[shadows.length - 1]
+                        }} classNames={['bottom-left']} images={[horizontalMarking]}/>
+                        <RoundCard index={2} style={{
                             width: '50vmax', minWidth: '400px', height: '50vmax',
                             top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-                            border: `25px solid ${palette.text.primary}`,
-                        }} classNames={['center']}/>
-                        <RoundCard style={{
-                            width: '50vmax',
-                            height: '50vmax', backgroundColor: 'red',
-                            top: '55%', left: '50%'
-                        }} classNames={['bottom-right']}/>
-                        <RoundCard style={{
+                            border: `25px solid ${palette.text.primary}`, boxShadow: shadows[shadows.length - 1]
+                        }} classNames={['center']} images={[imgMain1, imgMain2, imgMain3]}/>
+                        <RoundCard index={3} style={{
+                            width: '50vmax', height: '50vmax', border: `10px solid ${palette.background.paper}`,
+                            top: '55%', left: '50%', boxShadow: shadows[shadows.length - 1]
+                        }} classNames={['bottom-right']} images={[horizontalSign]}/>
+                        <RoundCard index={4} style={{
                             width: '30vmax', height: '30vmax', bottom: '60%', left: '65%',
-                            border: '35px solid #fed100'
-                        }} classNames={['top-right']}/>
-                        <RoundCard style={{
-                            width: '50vmax',
-                            height: '50vmax', backgroundColor: 'red',
-                            bottom: '55%', right: '50%'
-                        }} classNames={['top-left']}/>
+                            border: '35px solid #fed100', boxShadow: shadows[shadows.length - 1]
+                        }} classNames={['top-right']} images={[vs1, vs3, vs4, vs5]}/>
+                        <RoundCard index={5} style={{
+                            width: '50vmax', height: '50vmax', border: `10px solid ${palette.background.paper}`,
+                            bottom: '55%', right: '50%', boxShadow: shadows[shadows.length - 1]
+                        }} classNames={['top-left']} images={[plantBitumen, plantAsphalt]}/>
                     </div>
                 </AppScene>
             </div>
-            <Flicking ref={flicking} horizontal={false} autoResize={true} duration={500}
+            <Flicking ref={flicking} horizontal={false} autoResize={true} duration={700}
                       onWillChange={e => onFlickingChanged(e)}
                       moveType={[MOVE_TYPE.STRICT, {count: 1}]}
                       bounce={10} onMove={onFlickingMove}>

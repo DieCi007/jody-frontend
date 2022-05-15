@@ -81,7 +81,7 @@ export const PROPS = {
         },
     },
     '.shapes .center': {
-        0.3: {
+        0: {
             'width': '50vmax',
             'height': '50vmax',
             'border-radius': '50%',
