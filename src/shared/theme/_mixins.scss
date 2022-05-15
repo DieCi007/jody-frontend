@@ -1,0 +1,42 @@
+@mixin homepageTextContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .contentContainer {
+    max-width: 90vw;
+    border-radius: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    width: 30rem;
+    position: relative;
+
+    &.light {
+      background-color: hsla(49, 100, 50, 0.8)
+    }
+
+    &.dark {
+      background-color: hsla(0, 0, 13, 0.7)
+    }
+
+    .helmet {
+      position: absolute;
+      width: 4rem;
+      height: 4rem;
+      background-size: cover;
+      transform: rotate(-10deg);
+
+      &.light {
+        background-image: url("../../assets/images/helmet.png");
+      }
+
+      &.dark {
+        background-image: url("../../assets/images/helmet-yellow.png");
+      }
+    }
+  }
+}

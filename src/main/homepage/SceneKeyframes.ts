@@ -57,7 +57,7 @@ export const PROPS = {
     '.shapes .bottom-left': {
         0: {
             transform: "translate(0%, 0vh) translateY(0%)",
-            top: '50%', right: '65%'
+            top: '50%', right: '60%'
         },
         0.9: {
             opacity: 1

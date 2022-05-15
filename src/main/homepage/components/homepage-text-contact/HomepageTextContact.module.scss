@@ -1,0 +1,23 @@
+@import "../../../../shared/theme/variables";
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .content {
+    border: 8px solid white;
+    font-weight: 700;
+    font-size: 2rem;
+    text-decoration: underline;
+    text-decoration-color: $secondary;
+    text-decoration-thickness: 3px;
+    padding: 1rem;
+    max-width: 12ch;
+    color: white;
+    cursor: pointer;
+    background-color: hsla(0, 0, 13, 0.3)
+  }
+}

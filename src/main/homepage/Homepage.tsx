@@ -19,6 +19,10 @@ import vs4 from '../../assets/images/vs/v-sign-8.jpeg';
 import vs5 from '../../assets/images/vs/v-sign-9.jpeg';
 import horizontalSign from '../../assets/images/horizontal-sign-main.jpeg';
 import horizontalMarking from '../../assets/images/horizontal-marking-main.jpeg';
+import HomepageTextMain from './components/homepage-text-main/HomepageTextMain';
+import HomepageTextServices from './components/homepage-text-services/HomepageTextServices';
+import HomepageTextEco from './components/homepage-text-eco/HomepageTextEco';
+import HomepageTextContact from './components/homepage-text-contact/HomepageTextContact';
 
 const Homepage = () => {
     const {palette, shadows} = useTheme();
@@ -77,7 +81,7 @@ const Homepage = () => {
                         <div className={`background2 ${styles.thirdPage}`}
                              style={{backgroundImage: palette.mode === 'light' ? `url(${srDay})` : `url(${srNight})`}}/>
                         <RoundCard index={1} style={{
-                            width: '40vmax', height: '40vmax', top: '50%', right: '65%',
+                            width: '40vmax', height: '40vmax', top: '50%', right: '60%',
                             border: '35px solid #fed100', boxShadow: shadows[shadows.length - 1]
                         }} classNames={['bottom-left']} images={[horizontalMarking]}/>
                         <RoundCard index={2} style={{
@@ -104,10 +108,10 @@ const Homepage = () => {
                       onWillChange={e => onFlickingChanged(e)}
                       moveType={[MOVE_TYPE.STRICT, {count: 1}]}
                       bounce={10} onMove={onFlickingMove}>
-                <div className={styles.page}>diego</div>
-                <div className={styles.page}>mario</div>
-                <div className={styles.page}>diego</div>
-                <div className={styles.page}>diego</div>
+                <div className={styles.page}><HomepageTextMain/></div>
+                <div className={styles.page}><HomepageTextServices/></div>
+                <div className={styles.page}><HomepageTextEco/></div>
+                <div className={styles.page}><HomepageTextContact/></div>
             </Flicking>
         </div>
     )
