@@ -1,8 +1,10 @@
 import styles from './HomepageTextMain.module.scss'
 import { useTheme } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const HomepageTextMain = () => {
     const {palette} = useTheme();
+    const {t} = useTranslation()
 
     return (
         <div className={styles.container}>
@@ -11,11 +13,11 @@ const HomepageTextMain = () => {
                 <div className={`${styles.helmet} ${styles[palette.mode]}`}/>
                 <div className={styles.titleContainer}>
                     <div className={styles.title}>JODY</div>
-                    <div className={styles.titleDescription}>Construction & Services</div>
+                    <div className={styles.titleDescription}>{t('companyDescription')}</div>
                 </div>
                 <div className={styles.description}>
-                    <div>Quality & Reliability without compromises.</div>
-                    <div className={styles.descriptionTag}>Since 1997.</div>
+                    <div>{t('companyMoto')}</div>
+                    <div className={styles.descriptionTag}>{t('companySince')}</div>
                 </div>
             </div>
         </div>
