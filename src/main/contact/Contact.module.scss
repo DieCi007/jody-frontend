@@ -1,0 +1,97 @@
+@import "../../shared/theme/variables";
+
+.container {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+
+  .topSection {
+    height: 50%;
+    width: 100%;
+    position: relative;
+
+    .flickingImg {
+      height: 100%;
+      width: 100%;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .titleContainer {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, hsl(4, 0, 0, 0.7), transparent);
+      z-index: 1;
+      padding: 1rem 0 1rem 2rem;
+
+      .title, .description {
+        width: 50%;
+      }
+
+      .title {
+        color: #fff;
+        font-weight: 700;
+        font-size: 4rem;
+
+        &:first-letter {
+          color: $secondary;
+        }
+      }
+
+      .description {
+        color: $text-secondary;
+        font-weight: 500;
+        font-size: 1.2rem;
+        letter-spacing: 1.5px;
+      }
+    }
+  }
+
+  .bottomSection {
+    position: relative;
+    top: -1.2rem;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    .topSection {
+      .titleContainer {
+        .title, .description {
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+
+@media #{$tablet-max}{
+  .container {
+    .topSection {
+      .titleContainer {
+        .title, .description {
+          width: 90%;
+        }
+      }
+    }
+  }
+}
+
+@media #{$smartphone}{
+  .container {
+    .topSection {
+      .titleContainer {
+        .title {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}

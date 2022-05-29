@@ -13,6 +13,9 @@ $info-dark: rgb(49, 42, 36);
 $error: #d32f2f;
 $warning: #ed6c02;
 
+$text-secondary: rgba(255, 255, 255, 0.85);
+$text-disabled: rgba(255, 255, 255, 0.5);
+
 $smartphone: "only screen and (min-width: 320px) and (max-width: 812px)";
 $tablet: "only screen and (min-width: 813px) and (max-width: 1024)";
 $tablet-max: "only screen and (max-width: 1024px)";

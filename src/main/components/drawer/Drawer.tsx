@@ -55,7 +55,7 @@ const Drawer = () => {
                     </div>
                 }
                 <div style={{height: '11rem', backgroundColor: palette.background.paper}}>
-                    <DrawerSlide/>
+                    <DrawerSlide onRedirect={() => setIsDrawerOpen(false)}/>
                 </div>
             </SwipeableDrawer>
         </>

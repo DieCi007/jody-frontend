@@ -1,23 +1,6 @@
-import { InputBase, NativeSelect, styled } from '@mui/material';
+import { NativeSelect } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-
-const BootstrapInput = styled(InputBase)(({theme}) => ({
-    '& .MuiInputBase-input': {
-        position: 'relative',
-        borderRadius: '10px',
-        backgroundColor: theme.palette.background.paper,
-        color: theme.palette.getContrastText(theme.palette.background.paper),
-        border: '1px solid #fed100',
-        fontSize: 16,
-        padding: '8px 26px 8px 12px',
-        transition: theme.transitions.create(['border-color', 'box-shadow']),
-        '&:focus': {
-            borderRadius: '10px',
-            borderColor: theme.palette.secondary.light,
-            backgroundColor: theme.palette.background.paper,
-        },
-    },
-}));
+import { BootstrapInput } from '../custom-mui';
 
 const LanguageSelect = () => {
     const {i18n} = useTranslation();

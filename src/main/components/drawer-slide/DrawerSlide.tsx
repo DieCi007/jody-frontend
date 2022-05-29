@@ -3,10 +3,16 @@ import Flicking, { MoveEvent, ReadyEvent, SelectEvent } from '@egjs/react-flicki
 import { useTranslation } from 'react-i18next';
 import { SvgIcon, useTheme } from '@mui/material';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const DrawerSlide = () => {
+export type DrawerSlideProps = {
+    onRedirect: () => void;
+}
+const DrawerSlide = ({onRedirect}: DrawerSlideProps) => {
     const {palette} = useTheme();
     const {t} = useTranslation()
+    const navigate = useNavigate();
+
     const onSelect = (e: SelectEvent<Flicking>): void => {
         e.panel.focus(300);
     }
@@ -14,6 +20,7 @@ const DrawerSlide = () => {
     const onReady = (e: ReadyEvent<Flicking>): void => {
         e.currentTarget.element.style.perspective = '160px';
         e.currentTarget.element.style.transformStyle = 'preserve-3d';
+        e.currentTarget.element.style.pointerEvents = 'none';
         e.currentTarget.camera.element.style.transformStyle = 'preserve-3d';
     }
 
@@ -28,6 +35,11 @@ const DrawerSlide = () => {
         });
     }
 
+    const redirect = (index: number) => {
+        navigate(index === 0 ? '/' : index === 1 ? '/contact' : '/contact/jobs')
+        onRedirect();
+    }
+
     return (
         <Flicking
             onReady={e => onReady(e)}
@@ -37,7 +49,7 @@ const DrawerSlide = () => {
             {
                 [t('mainPage'), t('contactsHeader'), t('jobsHeader')].map((title, i) => {
                     return (
-                        <div className={styles.panel} key={i}>
+                        <div className={styles.panel} key={i} onClick={() => redirect(i)}>
                             <div className={styles.wrapper}>
                                 <div className={styles.planeTop}
                                      style={{borderColor: palette.primary.light}}>

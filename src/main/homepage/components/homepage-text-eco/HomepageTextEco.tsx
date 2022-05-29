@@ -1,22 +1,25 @@
 import styles from './HomepageTextEco.module.scss';
 import { useTheme } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const HomepageTextEco = () => {
     const {palette} = useTheme();
+    const {t} = useTranslation();
+
     return (
         <div className={styles.container}>
             <div className={`${styles.contentContainer} ${styles[palette.mode]}`}
                  style={{color: palette.text.primary}}>
                 <div className={`${styles.helmet} ${styles[palette.mode]}`}/>
-                <div className={styles.title}>Ecological & Environmental Services</div>
+                <div className={styles.title}>{t('eco.title')}</div>
                 <div className={styles.services}>
                     <ul>
-                        <li>Sewer and Drain Cleaning Services</li>
-                        <li>Intervetions with a fleet of different size machines for every use case</li>
-                        <li>Boat waste and oil treatment & discharge</li>
-                        <li>Sewer pipe treatment and maintenance for Institutions and Condominiums</li>
-                        <li>Sanitation, disinfestation</li>
-                        <li>Inert waste collection</li>
+                        <li>{t('eco.cleaning')}</li>
+                        <li>{t('eco.vehicles')}</li>
+                        <li>{t('eco.oils')}</li>
+                        <li>{t('eco.maintenance')}</li>
+                        <li>{t('eco.sanitation')}</li>
+                        <li>{t('eco.waste')}</li>
                     </ul>
                 </div>
             </div>

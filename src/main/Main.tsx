@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import React from 'react';
 import Homepage from './homepage/Homepage';
 import { useMediaQuery, useTheme } from '@mui/material';
-
+import Contact from './contact/Contact';
 
 const Main = () => {
     const {breakpoints} = useTheme();
@@ -18,7 +18,8 @@ const Main = () => {
             <div className={styles.routes} style={{height: `calc(100% - ${isDownMd ? '3rem' : '4rem'})`}}>
                 <Routes>
                     <Route path='/' element={<Homepage/>}/>
-                    <Route path='*' element={<Navigate to='/home'/>}/>
+                    <Route path='/contact/*' element={<Contact/>}/>
+                    <Route path='*' element={<Navigate to='/'/>}/>
                 </Routes>
             </div>
         </div>

@@ -1,0 +1,17 @@
+@import "../../../../shared/theme/variables";
+
+.container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+
+@media #{$smartphone} {
+  .container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+}

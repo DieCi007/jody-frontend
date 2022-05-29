@@ -24,12 +24,11 @@ function App() {
     return (
         <div className={styles.app} style={{background: theme.palette.background.default}}>
             <CssBaseline/>
-            {/*<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>*/}
             <ColorModeContext.Provider value={themeContext}>
                 <ThemeProvider theme={theme}>
                     <Routes>
-                        <Route path='/home/*' element={<Main/>}/>
-                        <Route path='*' element={<Navigate to='home'/>}/>
+                        <Route path='/*' element={<Main/>}/>
+                        <Route path='*' element={<Navigate to='/'/>}/>
                     </Routes>
                 </ThemeProvider>
             </ColorModeContext.Provider>

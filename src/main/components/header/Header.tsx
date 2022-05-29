@@ -19,13 +19,12 @@ const Header = () => {
             {
                 isDownMd ? <Drawer/> :
                     <>
-                        <HeaderLink redirect='/home' title={t('mainPage')}/>
+                        <HeaderLink redirect='/' title={t('mainPage')}/>
+                        <HeaderLink redirect='/contact' title={t('contactsHeader')}/>
+                        <HeaderLink redirect='/contact/jobs' title={t('jobsHeader')}/>
                     </>
 
             }
-            {/*<HeaderLink redirect='home' title={t('history')}/>*/}
-            {/*<HeaderLink redirect='home' title={t('contactsHeader')}/>*/}
-            {/*<HeaderLink redirect='home' title={t('jobsHeader')}/>*/}
             <div className={styles.toggle}>
                 <ThemeToggle/>
             </div>
