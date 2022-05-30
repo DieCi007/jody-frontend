@@ -9,6 +9,7 @@
     height: 50%;
     width: 100%;
     position: relative;
+    z-index: -1;
 
     .flickingImg {
       height: 100%;
@@ -79,6 +80,10 @@
         .title, .description {
           width: 90%;
         }
+
+        .description {
+          letter-spacing: 1px;
+        }
       }
     }
   }
@@ -88,8 +93,19 @@
   .container {
     .topSection {
       .titleContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding-left: 1rem;
+
         .title {
-          font-size: 2rem;
+          font-size: 2.1rem;
+          line-height: 2.5rem;
+        }
+
+        .description {
+          font-size: 1.1rem;
+          line-height: 1.4rem;
         }
       }
     }
