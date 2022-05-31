@@ -4,6 +4,9 @@ export const OPTIONS: InitOptions = {
     resources: {
         en: {
             translation: {
+                administrator: 'Administrator',
+                mainOffice: 'Central Office',
+                address: 'Vlorë, Sarandë, Skënderbeu Street, Building n.3, Floor n.3, Door n.4',
                 mainPage: 'Home',
                 contactsHeader: 'Contact & Quotations',
                 jobsHeader: 'Work With Us',
@@ -50,6 +53,9 @@ export const OPTIONS: InitOptions = {
         },
         it: {
             translation: {
+                administrator: 'Amministratore',
+                mainOffice: 'Sede Centrale',
+                address: 'Vlorë, Sarandë, Via Skënderbeu, Edificio n.3, Piano n.3, Porta n.4',
                 mainPage: 'Home',
                 contactsHeader: 'Contatti & Preventivi',
                 jobsHeader: 'Lavora Con Noi',
@@ -96,6 +102,9 @@ export const OPTIONS: InitOptions = {
         },
         al: {
             translation: {
+                administrator: 'Administrator',
+                mainOffice: 'Zyra Qëndrore',
+                address: 'Vlorë, Sarandë, Lagjja Nr.1, Rruga Skënderbeu, Godina nr.3, Kati i 3, Hyrja Nr.4',
                 mainPage: 'Faqja Kryesore',
                 contactsHeader: 'Kontakt & Preventive',
                 jobsHeader: 'Puno Me Ne',

@@ -9,12 +9,31 @@ import React from 'react';
 import QuotationsForm from './components/quotation-form/QuotationsForm';
 import JobsForm from './components/jobs-form/JobsForm';
 import { useTranslation } from 'react-i18next';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 const Contact = () => {
     const autoPlayPlugin = new AutoPlay({duration: 4000, direction: 'NEXT', stopOnHover: true});
     const {pathname} = useLocation();
     const {t} = useTranslation();
-
+    const {breakpoints} = useTheme();
+    const isDownMd = useMediaQuery(breakpoints.down('md'));
+    const contacts = [
+        {
+            name: 'Simon Cipa',
+            location: t('administrator'),
+            phone: '+355 692094007',
+            mail: 'simon@jody.al'
+        },
+        {
+            name: 'Joni Cipa',
+            location: t('mainOffice'),
+            phone: '+355 695529281',
+            mail: 'joni@jody.al'
+        }
+    ]
     return (
         <div className={styles.container}>
             <section className={styles.topSection}>
@@ -32,13 +51,31 @@ const Contact = () => {
                         className={styles.description}>{pathname.includes('jobs') ? t('jobs.description') : t('contact.description')}</div>
                 </div>
             </section>
-            <section className={styles.bottomSection}>
+            <section className={styles.contactSection}>
                 <Routes>
                     <Route path='/' element={<QuotationsForm/>}/>
                     <Route path='/jobs' element={<JobsForm/>}/>
                     <Route path='/jobs/*' element={<JobsForm/>}/>
                     <Route path='*' element={<Navigate to='/'/>}/>
                 </Routes>
+            </section>
+            <section className={styles.addressSection}
+                     style={{paddingBottom: isDownMd ? '50px' : '.5rem'}}>
+                <div className={styles.address}><LocationOnOutlinedIcon/>{t('address')}</div>
+                {
+                    contacts.map(c => (
+                        <div key={c.name} className={styles.contactBox}>
+                            <div className={styles.contactName}>{c.name}</div>
+                            <div>{c.location}</div>
+                            <div className={styles.iconContact}>
+                                <LocalPhoneOutlinedIcon/>
+                                <span><i>{c.phone}</i></span>
+                                <AlternateEmailIcon/>
+                                <a href={`mailto:${c.mail}`}>{c.mail}</a>
+                            </div>
+                        </div>
+                    ))
+                }
             </section>
         </div>
     )

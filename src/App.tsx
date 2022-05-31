@@ -22,7 +22,8 @@ function App() {
     }), []);
 
     return (
-        <div className={styles.app} style={{background: theme.palette.background.default}}>
+        <div className={styles.app}
+             style={{background: theme.palette.background.default, color: theme.palette.text.primary}}>
             <CssBaseline/>
             <ColorModeContext.Provider value={themeContext}>
                 <ThemeProvider theme={theme}>

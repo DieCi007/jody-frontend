@@ -24,7 +24,7 @@
       top: 0;
       height: 100%;
       width: 100%;
-      background: linear-gradient(90deg, hsl(4, 0, 0, 0.7), transparent);
+      background: linear-gradient(90deg, hsl(4, 0%, 0%, 0.7), transparent);
       z-index: 1;
       padding: 1rem 0 1rem 2rem;
 
@@ -51,13 +51,49 @@
     }
   }
 
-  .bottomSection {
+  .contactSection {
     position: relative;
     top: -1.2rem;
     z-index: 2;
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-bottom: 1rem;
+  }
+
+  .addressSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: .5rem;
+    flex-wrap: wrap;
+
+    .contactBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 2rem;
+      font-weight: 500;
+
+      .contactName {
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: $secondary-dark;
+      }
+
+      .iconContact {
+        display: flex;
+        align-items: center;
+
+        a, span {
+          margin: 0 .5rem 0 .2rem;
+        }
+      }
+    }
   }
 }
 
@@ -68,6 +104,12 @@
         .title, .description {
           width: 60%;
         }
+      }
+    }
+
+    .addressSection {
+      .address {
+        order: 2;
       }
     }
   }
@@ -84,6 +126,16 @@
         .description {
           letter-spacing: 1px;
         }
+      }
+    }
+
+    .addressSection {
+      .address {
+        width: 100%;
+        text-align: center;
+      }
+
+      .contactBox {
       }
     }
   }
@@ -107,6 +159,11 @@
           font-size: 1.1rem;
           line-height: 1.4rem;
         }
+      }
+    }
+    .addressSection {
+      .address, .contactBox{
+       padding-bottom: .5rem;
       }
     }
   }
