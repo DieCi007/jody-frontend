@@ -9,9 +9,10 @@ export type RoundCardProps = {
     classNames?: string[],
     images: string[],
     index: number
+    imagePosition?: string;
 }
 
-const RoundCard = ({style, classNames, images, index}: RoundCardProps) => {
+const RoundCard = ({style, classNames, images, index, imagePosition}: RoundCardProps) => {
     const plugin = new AutoPlay({duration: 4000 + index * 500, direction: 'NEXT', stopOnHover: true});
     const {palette} = useTheme();
 
@@ -21,7 +22,10 @@ const RoundCard = ({style, classNames, images, index}: RoundCardProps) => {
             {
                 images.map(imgName => (
                     <div key={imgName} className={styles.image}
-                         style={{backgroundImage: `url(${imgName}`}}/>
+                         style={{
+                             backgroundImage: `url(${imgName}`,
+                             backgroundPosition: imagePosition ? imagePosition : 'center'
+                         }}/>
                 ))
             }
         </Flicking>

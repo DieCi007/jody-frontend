@@ -11,6 +11,7 @@ const LIGHT_THEME = createTheme(getDesignTokens('light'));
 const DARK_THEME = createTheme(getDesignTokens('dark'));
 
 function App() {
+    window.document.body.style.height = window.innerHeight + 'px';
     // THEME
     const prefersDarkMode: boolean = useMediaQuery('(prefers-color-scheme: dark)');
     const [themeMode, setThemeMode] = useState<PaletteMode>(getDefaultThemeMode(prefersDarkMode));

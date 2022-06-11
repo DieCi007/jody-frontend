@@ -114,10 +114,10 @@ export const OPTIONS: InitOptions = {
                 jobsHeader: 'Puno Me Ne',
                 companyDescription: 'Construction & Services',
                 companyMoto: 'Cilësi dhe Siguri pa kompromise.',
-                companySince: 'Që pres 1997.',
+                companySince: 'Që prej 1997.',
                 send: 'Dergo',
                 services: {
-                    title: 'Shërbime, Pajisje & te tjera',
+                    title: 'Shërbime, Pajisje & më shumë',
                     paving: 'Asfaltim rrugësh, prodhim i të gjithë komponentëve të nevojshëm në çdo fazë',
                     plants: 'Fabrikë për prodhim Asfalti dhe Emulsion Bituminoz',
                     signs: 'Sinjalistikë rrugore Vertikale dhe Horizontale',

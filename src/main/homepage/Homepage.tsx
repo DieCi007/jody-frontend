@@ -98,7 +98,8 @@ const Homepage = () => {
                 width: '50vmax', minWidth: '400px', height: '50vmax',
                 top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
                 border: `25px solid ${palette.text.primary}`
-            }} classNames={['center']} images={[imgMain1, imgMain2, imgMain3]}/>
+            }} classNames={['center']} images={[imgMain1, imgMain2, imgMain3]}
+                       imagePosition='top'/>
             <RoundCard index={3} style={{
                 width: '50vmax', height: '50vmax', border: `10px solid ${palette.background.paper}`,
                 top: '55%', left: '50%'
@@ -126,7 +127,8 @@ const Homepage = () => {
                 width: '50vmax', minWidth: '400px', height: '50vmax',
                 top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
                 border: `25px solid ${palette.text.primary}`
-            }} classNames={['center']} images={[imgMain1, imgMain2, imgMain3]}/>
+            }} classNames={['center']} images={[imgMain1, imgMain2, imgMain3]}
+                       imagePosition='top'/>
             <RoundCard index={3} style={{
                 width: '35vmax', height: '35vmax', border: `10px solid ${palette.background.paper}`,
                 top: '60%', right: '0%'

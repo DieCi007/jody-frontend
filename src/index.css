@@ -36,3 +36,7 @@ body {
     padding: 0;
     font-family: "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
 }
+
+#root {
+    height: 100%;
+}
