@@ -5,14 +5,16 @@ import contact from '../../assets/images/home-4.jpeg';
 import contact1 from '../../assets/images/home-3.jpeg';
 import contact2 from '../../assets/images/home-2.jpeg';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import React from 'react';
+import React, { useState } from 'react';
 import QuotationsForm from './components/quotation-form/QuotationsForm';
 import JobsForm from './components/jobs-form/JobsForm';
 import { useTranslation } from 'react-i18next';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import { useMediaQuery, useTheme } from '@mui/material';
+import { Alert, Snackbar, useMediaQuery, useTheme } from '@mui/material';
+import { IContactRequest } from './model/ContactRequest';
+import { sendContactRequest } from './ContactService';
 
 const Contact = () => {
     const autoPlayPlugin = new AutoPlay({duration: 4000, direction: 'NEXT', stopOnHover: true});
@@ -20,6 +22,10 @@ const Contact = () => {
     const {t} = useTranslation();
     const {breakpoints} = useTheme();
     const isDownMd = useMediaQuery(breakpoints.down('md'));
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error'>('success');
+    const [loading, setLoading] = useState(false);
+
     const contacts = [
         {
             name: 'Simon Cipa',
@@ -34,6 +40,25 @@ const Contact = () => {
             mail: 'joni@jody.al'
         }
     ]
+
+    const onFormSubmit = (request: IContactRequest) => {
+        setLoading(true);
+        sendContactRequest(request)
+            .then(onSubmitSuccess)
+            .catch(onSubmitError)
+            .finally(() => setLoading(false));
+    }
+
+    const onSubmitSuccess = () => {
+        setSnackbarSeverity('success');
+        setSnackbarOpen(true);
+    }
+
+    const onSubmitError = () => {
+        setSnackbarSeverity('error');
+        setSnackbarOpen(true);
+    }
+
     return (
         <div className={styles.container}>
             <section className={styles.topSection}>
@@ -53,9 +78,9 @@ const Contact = () => {
             </section>
             <section className={styles.contactSection}>
                 <Routes>
-                    <Route path='/' element={<QuotationsForm/>}/>
-                    <Route path='/jobs' element={<JobsForm/>}/>
-                    <Route path='/jobs/*' element={<JobsForm/>}/>
+                    <Route path='/' element={<QuotationsForm onFormSubmit={onFormSubmit} loading={loading}/>}/>
+                    <Route path='/jobs' element={<JobsForm onFormSubmit={onFormSubmit} loading={loading}/>}/>
+                    <Route path='/jobs/*' element={<JobsForm onFormSubmit={onFormSubmit} loading={loading}/>}/>
                     <Route path='*' element={<Navigate to='/'/>}/>
                 </Routes>
             </section>
@@ -77,6 +102,21 @@ const Contact = () => {
                     ))
                 }
             </section>
+            <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center'}} open={snackbarOpen} autoHideDuration={4000}
+                      onClose={() => setSnackbarOpen(false)}>
+                <Alert onClose={() => setSnackbarOpen(false)} severity={snackbarSeverity} sx={{width: '100%'}}>
+                    {
+                        snackbarSeverity === 'success' ?
+                            <>
+                                {t('contact.success')}
+                            </> :
+                            <>
+                                {t('contact.error')} <a style={{textDecoration: 'none', color: 'rgb(177, 146, 0)'}}
+                                                        href={`mailto:diego@jody.al`}>diego@jody.al</a>
+                            </>
+                    }
+                </Alert>
+            </Snackbar>
         </div>
     )
 }

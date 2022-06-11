@@ -42,7 +42,9 @@ export const OPTIONS: InitOptions = {
                     renting: 'Vehicle and tool rental',
                     eco: 'Sewer blockages, interventions and discharge',
                     other: 'Other',
-                    details: 'Details'
+                    details: 'Details',
+                    error: 'Something went wrong. For more help contact ',
+                    success: 'Message sent. You will be contacted soon.'
                 },
                 jobs: {
                     title: 'Experienced and a specialist at your craft? Tell us more!',
@@ -91,7 +93,9 @@ export const OPTIONS: InitOptions = {
                     renting: 'Noleggio autoveicoli e strumenti',
                     eco: 'Trattamento, sblocco e scarico acque reflue',
                     other: 'Altro',
-                    details: 'Dettagli'
+                    details: 'Dettagli',
+                    error: 'Qualcosa è andato storto. Per aiuto contatta ',
+                    success: 'Messaggio inviato. Verrai contattato al più presto.'
                 },
                 jobs: {
                     title: 'Sei un specialista nel tuo mestiere? Parlaci di più!',
@@ -140,7 +144,9 @@ export const OPTIONS: InitOptions = {
                     renting: 'Automjete dhe pajisje me qera',
                     eco: 'Pastrim, zhbllokim dhe shkarkim i ujërave të zeza',
                     other: 'Tjetër',
-                    details: 'Detaje'
+                    details: 'Detaje',
+                    error: 'Aktualisht e pamundur të dërgohet mesazhi. Për ndihmë kontakto ',
+                    success: 'Mesazhi u dërgua. Do të kontaktohesh së shpejti.'
                 },
                 jobs: {
                     title: 'Specialist punimesh në fushën tënde? Na thuaj më shumë!',
