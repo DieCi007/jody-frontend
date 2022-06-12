@@ -104,7 +104,7 @@ const Homepage = () => {
                 top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
                 border: `25px solid ${palette.text.primary}`
             }} classNames={['center']} images={[imgMain1, imgMain2, imgMain3]}
-                       imagePosition='top'/>
+                       imagePosition='bottom'/>
             <RoundCard index={3} style={{
                 width: '50vmax', height: '50vmax', border: `10px solid ${palette.background.paper}`,
                 top: '55%', left: '50%'

@@ -87,11 +87,13 @@ export const DESKTOP_PROPS = {
             'border-radius': '50%',
             'border-width': '25px',
         },
-        1: {
+        0.9: {
             'border-radius': 0,
             'border-width': 0,
             'height': '100%',
             'width': '100%',
+        },
+        1.2: {
             transform: "translate(-50%, -50%) translateY(0%)"
         },
         2: {
