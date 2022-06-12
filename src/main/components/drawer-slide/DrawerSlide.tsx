@@ -45,6 +45,7 @@ const DrawerSlide = ({onRedirect}: DrawerSlideProps) => {
             onReady={e => onReady(e)}
             circular={true}
             onMove={e => onMove(e)}
+            interruptable={false}
             onSelect={e => onSelect(e)}>
             {
                 [t('mainPage'), t('contactsHeader'), t('jobsHeader')].map((title, i) => {

@@ -1,5 +1,5 @@
 @import "~@egjs/react-flicking/dist/flicking-inline.css";
-
+@import "~@egjs/flicking/dist/flicking.css";
 @font-face {
     font-family: 'Roboto';
     src: url("assets/font/Roboto-Bold.ttf") format("truetype");
@@ -35,8 +35,4 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-#root {
-    height: 100%;
 }

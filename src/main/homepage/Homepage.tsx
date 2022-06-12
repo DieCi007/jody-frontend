@@ -1,11 +1,10 @@
 import styles from './Homepage.module.scss'
-import Flicking, { ChangedEvent, MOVE_TYPE, WillChangeEvent } from '@egjs/react-flicking';
+import { ChangedEvent, MOVE_TYPE, WillChangeEvent } from '@egjs/react-flicking';
 import React, { useEffect, useRef, useState } from 'react';
 import PaginationDots from './components/pagination-dots/PaginationDots';
 import RoundCard from './components/round-card/RoundCard';
 import { useMediaQuery, useTheme } from '@mui/material';
 import { AppScene } from './components/scene/AppScene';
-import { DESKTOP_PROPS, MOBILE_PROPS } from './SceneKeyframes';
 import plantBitumen from '../../assets/images/bitumen-plant.jpeg';
 import plantAsphalt from '../../assets/images/asphalt-plant.jpeg';
 import imgMain1 from '../../assets/images/home-1.jpeg';
@@ -23,67 +22,73 @@ import HomepageTextMain from './components/homepage-text-main/HomepageTextMain';
 import HomepageTextServices from './components/homepage-text-services/HomepageTextServices';
 import HomepageTextEco from './components/homepage-text-eco/HomepageTextEco';
 import HomepageTextContact from './components/homepage-text-contact/HomepageTextContact';
+import Flicking from '@egjs/flicking';
+import { DESKTOP_PROPS, MOBILE_PROPS } from './SceneKeyframes';
 
 const Homepage = () => {
     const {palette, breakpoints} = useTheme();
     const [currentPage, setCurrentPage] = useState<number>(0);
-    const flicking = useRef<Flicking>(null);
+    const [flicking, setFlicking] = useState<Flicking | null>(null);
     const scene = useRef<AppScene>(null);
     const [textServicesVisible, setTextServicesVisible] = useState<boolean>(false);
     const [textEcoVisible, setTextEcoVisible] = useState<boolean>(false);
     const isDownMd = useMediaQuery(breakpoints.down('md'));
 
     useEffect(() => {
-        if (flicking.current && flicking.current.initialized) {
-            flicking.current.moveTo(0).catch();
+        if (flicking && flicking.initialized) {
+            flicking.moveTo(0).catch();
         }
     }, [palette]);
 
-    // Listen for scrolls and change page
+    // Initialize flicking
+    useEffect(() => {
+        setFlicking(new Flicking('#flicking', {
+            autoResize: true,
+            horizontal: false,
+            duration: 700,
+            moveType: [MOVE_TYPE.STRICT, {count: 1}],
+        }));
+    }, []);
+
+    // Listen for scrolls and change page, add Flicking listeners
     useEffect(() => {
         let {timerId, scrollListener} = handleScroll(flicking);
+        const onFlickingChanged = (e: ChangedEvent) => {
+            if (e.index === 1 && !textServicesVisible) {
+                return setTextServicesVisible(true);
+            }
+
+            if (e.index === 2 && !textEcoVisible) {
+                return setTextEcoVisible(true);
+            }
+        }
+        const onFlickingWillChange = (e: WillChangeEvent) => {
+            setCurrentPage(e.index);
+        }
+        flicking?.on('willChange', e => onFlickingWillChange(e));
+        flicking?.on('changed', e => onFlickingChanged(e));
+        flicking?.on('move', () => onFlickingMove());
+
         return () => {
             if (timerId) {
                 clearTimeout(timerId);
             }
             window.removeEventListener('wheel', scrollListener);
         };
-    }, []);
-
-    // Set Flicking viewport to 100% of page
-    useEffect(() => {
-        if (flicking.current) {
-            flicking.current.element.style.width = '100%';
-            flicking.current.element.style.height = '100%';
-        }
-    }, []);
-
-    const onPaginationClick = (index: number) => {
-        if (flicking.current) {
-            flicking.current.moveTo(index);
-            setCurrentPage(index);
-        }
-    }
-
-    const onFlickingChanged = (e: ChangedEvent<Flicking>) => {
-        if (e.index === 1 && !textServicesVisible) {
-            return setTextServicesVisible(true);
-        }
-
-        if (e.index === 2 && !textEcoVisible) {
-            return setTextEcoVisible(true);
-        }
-    }
-
-    const onFlickingWillChange = (e: WillChangeEvent<Flicking>) => {
-        setCurrentPage(e.index);
-    }
+    }, [flicking]);
 
     const onFlickingMove = () => {
-        let progress = flicking.current?.camera.progress;
+        let progress = flicking?.camera.progress;
         progress = progress || 0;
         scene.current?.setTime(progress)
         return progress;
+    }
+
+    const onPaginationClick = (index: number) => {
+        if (flicking) {
+            flicking.moveTo(index);
+            setCurrentPage(index);
+        }
     }
 
     const desktopView = (
@@ -154,24 +159,23 @@ const Homepage = () => {
                     </div>
                 </AppScene>
             </div>
-            <Flicking ref={flicking} horizontal={false} autoResize={true} duration={700}
-                      onWillChange={e => onFlickingWillChange(e)} onChanged={(e) => onFlickingChanged(e)}
-                      moveType={[MOVE_TYPE.STRICT, {count: 1}]}
-                      bounce={10} onMove={onFlickingMove}>
-                <div className={styles.page}><HomepageTextMain/></div>
-                <div className={`${styles.page} ${styles.lazy} ${textServicesVisible ? styles.visible : ''}`}>
-                    <HomepageTextServices/></div>
-                <div className={`${styles.page} ${styles.lazy} ${textEcoVisible ? styles.visible : ''}`}>
-                    <HomepageTextEco/></div>
-                <div className={styles.page}><HomepageTextContact/></div>
-            </Flicking>
+            <div id='flicking' className={`${styles.flicking} flicking-viewport vertical`}>
+                <div className={`flicking-camera`}>
+                    <div className={`${styles.page}`}><HomepageTextMain/></div>
+                    <div className={`${styles.page} ${styles.lazy} ${textServicesVisible ? styles.visible : ''}`}>
+                        <HomepageTextServices/></div>
+                    <div className={`${styles.page} ${styles.lazy} ${textEcoVisible ? styles.visible : ''}`}>
+                        <HomepageTextEco/></div>
+                    <div className={`${styles.page}`}><HomepageTextContact/></div>
+                </div>
+            </div>
         </div>
     )
 }
 
 export default Homepage;
 
-function handleScroll(flicking: React.RefObject<Flicking>) {
+function handleScroll(flicking: Flicking | null) {
     let timerId: NodeJS.Timeout | null = null;
     let isEnableScroll = true;
 
@@ -186,7 +190,7 @@ function handleScroll(flicking: React.RefObject<Flicking>) {
     }
 
     function scrollListener(e: WheelEvent) {
-        if (!isEnableScroll || flicking.current?.animating) {
+        if (!isEnableScroll || flicking?.animating) {
             return;
         }
         e.preventDefault();
@@ -194,13 +198,13 @@ function handleScroll(flicking: React.RefObject<Flicking>) {
 
         if (Math.abs(delta) > 40) {
             setScrollTimer();
-            if (!flicking.current) {
+            if (!flicking) {
                 return;
             }
-            if (delta > 0 && flicking.current.index < 3) {
-                flicking.current.next();
-            } else if (delta < 0 && flicking.current.index > 0) {
-                flicking.current.prev();
+            if (delta > 0 && flicking.index < 3) {
+                flicking.next();
+            } else if (delta < 0 && flicking.index > 0) {
+                flicking.prev();
             }
         }
     }
